@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>第一层急救药品</title>
+        <link rel="stylesheet" href="css/reset.css" type="text/css"><!--此处是我全局css代码，清除默认样式，无影响-->
+        <style>
+            
+        .ending_box{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .ending_con{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5rem;
+            height: 6rem;
+            margin-left: -2.5rem;
+            margin-top: -3rem;
+        }
+        .ending_con .ending_img{
+            margin: 0 auto;
+        }
+        .ending_con .ending_img img{
+            width: 100%;
+        }
+        .ending_con .ending_txt{
+            text-align: center;
+            line-height: 0.6rem;
+            font-size: 0.32rem;
+            color:#333;
+            margin-top: 0.5rem;
+            letter-spacing: 2px;
+        }
+        .ending_con .ending_biaoti{
+            text-align: center;
+            line-height: 0.6rem;
+            font-size: 0.52rem;
+            color:#003366;
+            margin-top: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+    
+        </style>
+        <script>
+
+            (function (win, designW) {
+                var doc = win.document;
+                var docEle = doc.documentElement;
+                designW = designW || 640; //设计稿宽度px,默认640px设计稿
+                var ratio = designW / 100; //640px=> 1rem = 100px, 超出640px font-size：100px;
+                var or = "orientationchange" in win ? "orientationchange" : "resize";
+                //创建viewport
+                _createViewport();
+                if (doc.addEventListener) {
+                    win.addEventListener(or, _refreshRem, false);
+                    doc.addEventListener("DOMContentLoaded", _refreshRem, false);
+                }
+                /**
+                * 创建viewport
+                */
+                function _createViewport() {
+                    var metaEl = doc.createElement('meta');
+                    metaEl.setAttribute('name', 'viewport');
+                    metaEl.setAttribute('content', 'initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no');
+                    if (docEle.firstElementChild) {
+                        docEle.firstElementChild.appendChild(metaEl);
+                    }
+
+                }
+                /**
+                * 动态更新rem
+                */
+                function _refreshRem() {
+                    var clientW = docEle.clientWidth || 320;
+                    //设置最大和最小宽度取值
+                    if (clientW > designW) {
+                        clientW = designW
+                    } else if (clientW < 320) {
+                        clientW = 320;
+                    }
+                    docEle.style.fontSize = clientW / ratio + "px";
+                };
+            })(window, 750); //750为设计稿宽度px值,根据实际设计稿大小对应设置
+    
+        </script>
+    </head>
+    <body>
+        <div class="ending_box" q-ctrl="endingCtrl">
+             <div class="ending_con">
+             <h1 class="ending_biaoti"><a href="HTMLPage2ji.htm">第一层：急救药品</a></h1>
+             <h2 class="ending_biaoti">重酒石酸间羟胺注射液</h2>
+           <!--  <p class="ending_biaoti">重酒石酸间羟胺注射液</p>-->
+                    <p class="ending_img">
+                           <img src="重酒石酸间羟胺注射液.jpg"/>
+                    </p>
+             </div>
+        </div>
+    </body>
+</html>
